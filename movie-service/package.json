@@ -4,8 +4,9 @@
   "description": "Single page application which allow users to search, add and delete films",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "start:dev": "webpack-dev-server --open"
+    "build": "webpack --config webpack.prod.js",
+    "start:dev": "webpack-dev-server --config webpack.dev.js",
+    "start:tests": ""
   },
   "keywords": [
     "react",
@@ -20,12 +21,15 @@
     "@babel/preset-react": "^7.10.4",
     "babel-core": "^6.26.3",
     "css-loader": "^4.1.1",
+    "html-webpack-plugin": "^4.3.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
     "style-loader": "^1.2.1",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "url-loader": "^4.1.0",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.0.9"
   },
   "dependencies": {
     "babel-loader": "^8.1.0",

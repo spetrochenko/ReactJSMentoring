@@ -1,10 +1,10 @@
 import React from "react";
-import FooterComponent from "./FooterComponent";
+import SearchComponent from "./SearchComponent";
 
 const MainComponent = () => {
   return (
     <>
-      <FooterComponent />
+      <SearchComponent />
     </>
   );
 };

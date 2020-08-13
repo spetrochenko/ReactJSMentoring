@@ -1,12 +1,12 @@
 import React from "react";
 import LogoComponent from "./logoComponent";
 
-const FooterComponent = () => {
+const HeaderComponent = () => {
   return (
-    <div className="footer">
+    <div className="header">
       <LogoComponent />
     </div>
   );
 };
 
-export default FooterComponent;
+export default HeaderComponent;

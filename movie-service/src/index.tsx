@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./styles/style.css";
-import Greeting from "./components/Greeting";
+import MainComponent from "./components/main/MainComponent";
 
 const App = () => {
-  return <Greeting />;
+  return <MainComponent />;
 };
 
 ReactDOM.render(<App />, document.getElementById("root"));

@@ -41,6 +41,8 @@ body {
 .search {
   margin: 0.8em 8em;
   display: flexbox;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: #ffffff;
 }
 
 .findTextLabel {
@@ -56,10 +58,34 @@ body {
   font-size: 2em;
   padding: 0.3em;
   width: 70%;
+  opacity: 90%;
   border-radius: 0.2em;
   background-color: #1c1c1c;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  color: #ffffff;
   outline: none;
   border: none;
+}
+
+.searchItems {
+  display: flex;
+}
+
+.searchButton {
+  margin-left: 1em;
+  width: 10em;
+  background-color: #f65261;
+  border: none;
+  border-radius: 0.2em;
+  outline: none;
+  font-size: 1.2em;
+  color: #ffffff;
+}
+
+.searchButton:hover {
+  transition: background-color 0.2s;
+  background: #ce404b;
+}
+
+.searchButton:active {
+  transform: scale(0.98);
+  background-color: #ce404b;
 }

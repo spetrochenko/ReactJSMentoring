@@ -3,7 +3,7 @@ export const getMockGenres = () => {
 };
 
 export const getMockSortParams = () => {
-  return ["REALEASE DATE, GENRE"];
+  return ["REALEASE DATE", "GENRE"];
 };
 
 export const getMockCount = () => {

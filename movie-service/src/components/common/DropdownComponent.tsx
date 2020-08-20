@@ -5,7 +5,15 @@ export interface DropdownComponentProps {
 }
 
 const DropdownComponent = (props: DropdownComponentProps) => {
-  return <></>;
+  return (
+    <select className="dropdown">
+      {props.values.map((value) => (
+        <option key={value} value={value}>
+          {value}
+        </option>
+      ))}
+    </select>
+  );
 };
 
 export default DropdownComponent;

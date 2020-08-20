@@ -211,3 +211,22 @@ body {
   background-color: #1d1d1d;
   height: 20em;
 }
+
+.dropdown {
+  display: inline-block;
+  font: inherit;
+  line-height: 1.5em;
+  padding: 0.5em 3.5em 0.5em 1em;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: #ffffff;
+  margin: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 50%;
+  background-image: url("../images/down-arrow.svg");
+}

@@ -3,7 +3,7 @@ import React, { MouseEvent, MouseEventHandler } from "react";
 export interface ButtonComponentProps {
   className?: string;
   onButtonClicked: MouseEventHandler;
-  text: string;
+  text?: string;
 }
 
 const ButtonComponent = (props: ButtonComponentProps) => {

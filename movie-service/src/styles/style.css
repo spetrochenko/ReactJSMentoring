@@ -35,6 +35,7 @@ body {
 
 .header {
   display: flex;
+  align-items: baseline;
   margin: 0.8em 4em;
 }
 
@@ -205,11 +206,13 @@ body {
 }
 
 .defaultImage {
+  width: 100%;
+  height: 100%;
+  position: absolute;
   color: #7a7a7a;
   font-size: 1.2em;
   text-align: center;
   background-color: #1d1d1d;
-  height: 20em;
 }
 
 .dropdown {
@@ -229,4 +232,56 @@ body {
   background-position-x: 100%;
   background-position-y: 50%;
   background-image: url("../images/down-arrow.svg");
+}
+
+.addMovieButton {
+  right: 0;
+  margin-left: auto;
+  height: 3em;
+  width: 10em;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: #f65261;
+  background-color: #545454;
+  border: none;
+  border-radius: 0.2em;
+  outline: none;
+}
+
+.addMovieButton:hover {
+  transition: background-color 0.2s;
+  background: #80545454;
+}
+
+.addMovieButton:active {
+  transform: scale(0.98);
+  background-color: #80545454;
+}
+
+.movieCardDots {
+  position: absolute;
+  right: 0;
+  background-color: #545454;
+  border: none;
+  outline: none;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 50%;
+  background-image: url("../images/menu.svg");
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+  background-position-y: 50%;
+  z-index: 1010;
+  margin: 0.8em;
+}
+
+.movieCardDots:active {
+  transform: scale(0.98);
+  background-color: #30545454;
+  transition: background-color 0.2s;
+}
+
+.imageWrapper {
+  height: 25em;
+  width: 20em;
+  position: relative;
 }

@@ -16,7 +16,11 @@ const ImageComponent = (props: ImageComponentProps) => {
   };
 
   const renderImage = () => {
-    return <></>;
+    return (
+      <div className={props.className}>
+        <img src={props.url}></img>
+      </div>
+    );
   };
 
   return <>{props.url == null ? renderDefaultImage() : renderImage()}</>;

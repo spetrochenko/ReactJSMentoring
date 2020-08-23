@@ -1,15 +1,23 @@
 import React from "react";
-import TextComponent from "../common/TextComponent";
+import ButtonComponent from "../common/ButtonComponent";
 
 export interface FilterComponentProps {
   genres: string[];
 }
 
 const FilterComponent = (props: FilterComponentProps) => {
+  const onGenreButtonClicked = (event: React.MouseEvent, genre: string) => {
+    console.log(`button clicked: ${genre}`);
+  };
+
   return (
     <div className="filter">
       {props.genres.map((genre) => (
-        <TextComponent key={genre} text={genre} />
+        <ButtonComponent
+          key={genre}
+          text={genre}
+          onButtonClicked={(event) => onGenreButtonClicked(event, genre)}
+        />
       ))}
     </div>
   );

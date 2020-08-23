@@ -102,10 +102,22 @@ body {
   display: flex;
 }
 
-.filter p {
+.filter button {
   margin-right: 1em;
   color: #ffffff;
   opacity: 80%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.filter button:hover {
+  transition: color 0.2s;
+  color: #f65261;
+}
+
+.filter button:active {
+  color: #f65261;
 }
 
 .filterSection {

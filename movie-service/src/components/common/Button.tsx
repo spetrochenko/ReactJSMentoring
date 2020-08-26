@@ -1,12 +1,12 @@
-import React, { MouseEvent, MouseEventHandler } from "react";
+import React, { MouseEventHandler } from "react";
 
-export interface ButtonComponentProps {
+export interface ButtonProps {
   className?: string;
   onButtonClicked: MouseEventHandler;
   text?: string;
 }
 
-const ButtonComponent = (props: ButtonComponentProps) => {
+const Button = (props: ButtonProps) => {
   return (
     <>
       <button className={props.className} onClick={props.onButtonClicked}>
@@ -16,4 +16,4 @@ const ButtonComponent = (props: ButtonComponentProps) => {
   );
 };
 
-export default ButtonComponent;
+export default Button;

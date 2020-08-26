@@ -1,10 +1,10 @@
 import React from "react";
 
-export interface EditTextComponentProps {
+export interface EditTextProps {
   placeholder?: string;
 }
 
-const EditTextComponent = (props: EditTextComponentProps) => {
+const EditText = (props: EditTextProps) => {
   return (
     <>
       <input className="editText" type="text" placeholder={props.placeholder} />
@@ -12,4 +12,4 @@ const EditTextComponent = (props: EditTextComponentProps) => {
   );
 };
 
-export default EditTextComponent;
+export default EditText;

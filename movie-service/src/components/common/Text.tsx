@@ -1,12 +1,12 @@
 import React from "react";
 
-export interface TextComponentProps {
+export interface TextProps {
   className?: string;
   text: string;
 }
 
-const TextComponent = (props: TextComponentProps) => {
+const Text = (props: TextProps) => {
   return <p className={props.className}>{props.text}</p>;
 };
 
-export default TextComponent;
+export default Text;

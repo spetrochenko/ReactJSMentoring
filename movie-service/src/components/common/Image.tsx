@@ -1,16 +1,16 @@
 import React from "react";
-import TextComponent from "./TextComponent";
+import Text from "./Text";
 
-export interface ImageComponentProps {
+export interface ImageProps {
   url?: string;
   className?: string;
 }
 
-const ImageComponent = (props: ImageComponentProps) => {
+const Image = (props: ImageProps) => {
   const renderDefaultImage = () => {
     return (
       <div className="defaultImage">
-        <TextComponent text="No Image" />
+        <Text text="No Image" />
       </div>
     );
   };
@@ -26,4 +26,4 @@ const ImageComponent = (props: ImageComponentProps) => {
   return <>{props.url == null ? renderDefaultImage() : renderImage()}</>;
 };
 
-export default ImageComponent;
+export default Image;

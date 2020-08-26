@@ -1,10 +1,10 @@
 import React from "react";
 
-export interface DropdownComponentProps {
+export interface DropdownProps {
   values: string[];
 }
 
-const DropdownComponent = (props: DropdownComponentProps) => {
+const Dropdown = (props: DropdownProps) => {
   return (
     <select className="dropdown">
       {props.values.map((value) => (
@@ -16,4 +16,4 @@ const DropdownComponent = (props: DropdownComponentProps) => {
   );
 };
 
-export default DropdownComponent;
+export default Dropdown;

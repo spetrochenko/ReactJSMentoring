@@ -1,7 +1,7 @@
 import React from "react";
 
-const DividerComponent = () => {
+const Divider = () => {
   return <div className="divider"></div>;
 };
 
-export default DividerComponent;
+export default Divider;

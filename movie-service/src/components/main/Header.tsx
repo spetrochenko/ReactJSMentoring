@@ -1,16 +1,16 @@
 import React from "react";
-import LogoComponent from "./logoComponent";
-import ButtonComponent from "../common/ButtonComponent";
+import Logo from "./Logo";
+import Button from "../common/Button";
 
-const HeaderComponent = () => {
+const Header = () => {
   const onAddMovieButtonClicked = (event: React.MouseEvent) => {
     console.log("button clicked");
   };
 
   return (
     <div className="header">
-      <LogoComponent />
-      <ButtonComponent
+      <Logo />
+      <Button
         className="addMovieButton"
         text="+ADD MOVIE"
         onButtonClicked={onAddMovieButtonClicked}
@@ -19,4 +19,4 @@ const HeaderComponent = () => {
   );
 };
 
-export default HeaderComponent;
+export default Header;

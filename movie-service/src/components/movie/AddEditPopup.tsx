@@ -3,12 +3,14 @@ import Popup from "../common/Popup";
 import Button from "../common/Button";
 import Text from "../common/Text";
 import EditText from "../common/EditText";
+import { IMovie } from "../../models/mocks";
 
 export interface AddEditPopupProps {
   isAddPopup: boolean;
   onCloseButtonClick: MouseEventHandler;
   onResetButtonClick: MouseEventHandler;
   onSubmitButtonClick: MouseEventHandler;
+  movie?: IMovie;
 }
 
 const AddEditPopup = (props: AddEditPopupProps) => {

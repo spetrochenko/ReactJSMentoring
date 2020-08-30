@@ -436,3 +436,15 @@ body {
   transform: scale(0.98);
   background-color: #80545454;
 }
+
+.movieOptions {
+  width: 10em;
+  height: 6em;
+  right: 0;
+  background-color: #545454;
+  color: #ffffff;
+  z-index: 1;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}

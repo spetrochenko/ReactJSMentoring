@@ -3,7 +3,8 @@ import Popup from "../common/Popup";
 import Button from "../common/Button";
 import Text from "../common/Text";
 import EditText from "../common/EditText";
-import { IMovie } from "../../models/mocks";
+import { IMovie, getMockGenres } from "../../models/mocks";
+import Dropdown from "../common/Dropdown";
 
 export interface AddEditPopupProps {
   isAddPopup: boolean;
@@ -52,11 +53,7 @@ const AddEditPopup = (props: AddEditPopupProps) => {
           className="popupEdit"
         />
         <Text text="GENRE" className="popupLabel" />
-        <EditText
-          placeholder="Genre"
-          text={props.movie?.genres.join(", ")}
-          className="popupEdit"
-        />
+        <Dropdown values={getMockGenres()} className="popupDropdown" />
         <Text text="OVERVIEW" className="popupLabel" />
         <EditText
           placeholder="Overview here"

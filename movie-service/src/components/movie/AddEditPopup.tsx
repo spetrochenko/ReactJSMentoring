@@ -15,7 +15,7 @@ export interface AddEditPopupProps {
 
 const AddEditPopup = (props: AddEditPopupProps) => {
   return (
-    <Popup className="addMoviePopup">
+    <Popup className={props.isAddPopup ? "addMoviePopup" : "editMoviePopup"}>
       <Button
         className="popupClose"
         onButtonClicked={props.onCloseButtonClick}
@@ -25,28 +25,59 @@ const AddEditPopup = (props: AddEditPopupProps) => {
           text={props.isAddPopup ? "ADD MOVIE" : "EDIT MOVIE"}
           className="popupTitle"
         />
-        {!props.isAddPopup ?? <Text text="MOVIE ID" className="popupLabel" />}
+        {!props.isAddPopup ? (
+          <>
+            <Text text="MOVIE ID" className="popupLabel" />
+            <Text text={props.movie.id} className="movieId" />
+          </>
+        ) : (
+          <></>
+        )}
         <Text text="TITLE" className="popupLabel" />
-        <EditText placeholder="Title" className="popupEdit" />
+        <EditText
+          placeholder="Title"
+          text={props.movie?.name}
+          className="popupEdit"
+        />
         <Text text="RELEASE DATE" className="popupLabel" />
-        <EditText placeholder="Title" className="popupEdit" />
+        <EditText
+          placeholder="Release date"
+          text={props.movie?.releaseYear}
+          className="popupEdit"
+        />
         <Text text="MOVIE URL" className="popupLabel" />
-        <EditText placeholder="Movie URL here" className="popupEdit" />
+        <EditText
+          placeholder="Movie URL here"
+          text={props.movie?.picture}
+          className="popupEdit"
+        />
         <Text text="GENRE" className="popupLabel" />
-        <EditText placeholder="Genre" className="popupEdit" />
+        <EditText
+          placeholder="Genre"
+          text={props.movie?.genres.join(", ")}
+          className="popupEdit"
+        />
         <Text text="OVERVIEW" className="popupLabel" />
-        <EditText placeholder="Overview here" className="popupEdit" />
+        <EditText
+          placeholder="Overview here"
+          text={props.movie?.overview}
+          className="popupEdit"
+        />
         <Text text="RUNTIME" className="popupLabel" />
-        <EditText placeholder="Runtime here" className="popupEdit" />
+        <EditText
+          placeholder="Runtime here"
+          text={props.movie?.runtime}
+          className="popupEdit"
+        />
       </div>
-      <div className="addMovieButtonContainer">
+      <div className="movieButtonContainer">
         <Button
           text="RESET"
           className="resetButton"
           onButtonClicked={props.onResetButtonClick}
         />
         <Button
-          text="SUBMIT"
+          text={props.isAddPopup ? "SUBMIT" : "SAVE"}
           className="submitButton"
           onButtonClicked={props.onSubmitButtonClick}
         />

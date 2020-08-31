@@ -3,6 +3,7 @@ import React from "react";
 export interface EditTextProps {
   placeholder?: string;
   className?: string;
+  text?: string;
 }
 
 const EditText = (props: EditTextProps) => {
@@ -12,6 +13,7 @@ const EditText = (props: EditTextProps) => {
         className={props.className !== undefined ? props.className : "editText"}
         type="text"
         placeholder={props.placeholder}
+        defaultValue={props.text}
       />
     </>
   );

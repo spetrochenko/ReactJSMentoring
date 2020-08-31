@@ -360,7 +360,7 @@ body {
   width: 2em;
   height: 2em;
   align-self: flex-end;
-  margin: 1em 1em;
+  margin: 1em;
   border: none;
   outline: none;
   background-color: transparent;
@@ -383,19 +383,30 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.editMoviePopup {
+  display: flex;
+  flex-direction: column;
+  background-color: #232323;
+  margin: 5% auto;
+  padding: 20px;
+  width: 40em;
+  height: 56em;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
 .addMovieContent {
   width: 100%;
   margin: 0 2.5em;
 }
 
-.addMovieButtonContainer {
+.movieButtonContainer {
   display: flex;
   margin-top: 2.5em;
   align-self: flex-end;
   margin-right: 3.5em;
 }
 
-.addMovieButtonContainer button {
+.movieButtonContainer button {
   height: 3em;
   width: 10em;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
@@ -447,4 +458,71 @@ body {
   position: absolute;
   display: flex;
   flex-direction: column;
+  margin: 1em;
+}
+
+.movieOptions button {
+  height: 2em;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-weight: lighter;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.closeMovieOptionsButton {
+  align-self: flex-end;
+  font-size: 2em;
+  margin-bottom: -1em;
+  padding-bottom: 1em;
+}
+
+.closeMovieOptionsButton:hover,
+.closeMovieOptionsButton:focus {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.movieOptionsButton {
+  text-align: left;
+  vertical-align: middle;
+  padding-left: 1em;
+  font-size: 1em;
+  margin-bottom: 0.2em;
+}
+
+.movieOptionsButton:hover {
+  transition: background-color 0.2s;
+  background: #ce404b;
+}
+
+.movieId {
+  color: #ffffff;
+  font-size: 1.3em;
+  font-weight: lighter;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.deleteMoviePopup {
+  display: flex;
+  flex-direction: column;
+  background-color: #232323;
+  margin: 5% auto;
+  padding: 20px;
+  width: 40em;
+  height: 18em;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.deleteMovieContent {
+  width: 100%;
+  margin: 0 2.5em;
+}
+
+.popupText {
+  font-size: 1.4em;
+  color: #ffffff;
+  font-weight: lighter;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }

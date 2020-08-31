@@ -12,22 +12,24 @@ export const getMockCount = () => {
 
 export const getMockMovies = () => {
   return [
-    buildMovie("Pulp Fiction", ["Action & Adventures"], 2004),
-    buildMovie("Bohemia Rapsody", ["Drama", "Biography", "Music"], 2003),
-    buildMovie("Kill Bill 2", ["Oskar winning movie"], 1994),
-    buildMovie("Avengers: Infinity War", ["Action & Adventures"], 2004),
-    buildMovie("Inception", ["Action & Adventures"], 2003),
-    buildMovie("Reservoir dogs", ["Oskar winning movie"], 1994),
+    buildMovie("1", "Pulp Fiction", ["Action & Adventures"], "2004"),
+    buildMovie("2", "Bohemia Rapsody", ["Drama", "Biography", "Music"], "2003"),
+    buildMovie("3", "Kill Bill 2", ["Oskar winning movie"], "1994"),
+    buildMovie("4", "Avengers: Infinity War", ["Action & Adventures"], "2004"),
+    buildMovie("5", "Inception", ["Action & Adventures"], "2003"),
+    buildMovie("6", "Reservoir dogs", ["Oskar winning movie"], "1994"),
   ];
 };
 
 const buildMovie = (
+  id: string,
   name: string,
   genres: string[],
-  releaseYear: number,
+  releaseYear: string,
   picture?: string,
 ) => {
   let movie: IMovie = {
+    id: id,
     picture: picture,
     name: name,
     genres: genres,
@@ -37,8 +39,11 @@ const buildMovie = (
 };
 
 export interface IMovie {
+  id: string;
   picture?: string;
   name: string;
   genres: string[];
-  releaseYear: number;
+  releaseYear: string;
+  overview?: string;
+  runtime?: string;
 }

@@ -10,9 +10,21 @@ export interface MovieOptionsProps {
 const MovieOptions = (props: MovieOptionsProps) => {
   return (
     <div className="movieOptions">
-      <Button text="" onButtonClicked={props.onCloseButtonClicked} />
-      <Button text="Edit" onButtonClicked={props.onEditButtonClicked} />
-      <Button text="Delete" onButtonClicked={props.onDeleteButtonClicked} />
+      <Button
+        text="&times;"
+        className="closeMovieOptionsButton"
+        onButtonClicked={props.onCloseButtonClicked}
+      />
+      <Button
+        text="Edit"
+        className="movieOptionsButton"
+        onButtonClicked={props.onEditButtonClicked}
+      />
+      <Button
+        text="Delete"
+        className="movieOptionsButton"
+        onButtonClicked={props.onDeleteButtonClicked}
+      />
     </div>
   );
 };

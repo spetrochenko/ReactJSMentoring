@@ -47,3 +47,8 @@ export interface IMovie {
   overview?: string;
   runtime?: string;
 }
+
+export class SortingConstants {
+  static releaseDate: string = "REALEASE DATE";
+  static genre: string = "GENRE";
+}

@@ -1,10 +1,11 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useState, useEffect } from "react";
 import Filter from "./Filter";
 import {
   getMockGenres,
   getMockCount,
   getMockMovies,
   SortingConstants,
+  IMovie,
 } from "../../models/mocks";
 import Sorting from "./Sorting";
 import Divider from "../common/Divider";
@@ -17,12 +18,21 @@ import {
 
 export interface MoviesSectionState {
   sortingParameter: string;
+  movieList?: IMovie[];
 }
 
 const MoviesSection = () => {
   const [sectionState, setSectionState] = useState<MoviesSectionState>({
     sortingParameter: SortingConstants.releaseDate,
+    movieList: new Array<IMovie>(),
   });
+
+  useEffect(() => {
+    setSectionState({
+      sortingParameter: SortingConstants.releaseDate,
+      movieList: getMockMovies(),
+    });
+  }, []);
 
   const handleSortingValueChanged = (event: ChangeEvent<HTMLSelectElement>) => {
     if (event.target.value === SortingConstants.releaseDate) {
@@ -37,7 +47,7 @@ const MoviesSection = () => {
   };
 
   const sortMovies = () => {
-    return getMockMovies().sort(
+    return sectionState.movieList.sort(
       sectionState.sortingParameter === SortingConstants.releaseDate
         ? movieReleaseDateCompare
         : movieGenreCompare,

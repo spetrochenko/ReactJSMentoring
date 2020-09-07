@@ -1,4 +1,4 @@
-import React, { Component, ChangeEvent } from "react";
+import React, { ChangeEvent, useState } from "react";
 import Filter from "./Filter";
 import {
   getMockGenres,
@@ -15,56 +15,48 @@ import {
   movieReleaseDateCompare,
 } from "../../infrastracture/Comparison";
 
-export interface MoviesSectionProps {}
-
 export interface MoviesSectionState {
   sortingParameter: string;
 }
 
-export default class MoviesSection extends Component<
-  MoviesSectionProps,
-  MoviesSectionState
-> {
-  constructor(props: MoviesSectionProps) {
-    super(props);
-    this.state = {
-      sortingParameter: SortingConstants.releaseDate,
-    };
-  }
+const MoviesSection = () => {
+  const [sectionState, setSectionState] = useState<MoviesSectionState>({
+    sortingParameter: SortingConstants.releaseDate,
+  });
 
-  handleSortingValueChanged = (event: ChangeEvent<HTMLSelectElement>) => {
+  const handleSortingValueChanged = (event: ChangeEvent<HTMLSelectElement>) => {
     if (event.target.value === SortingConstants.releaseDate) {
-      this.setState({
+      setSectionState({
         sortingParameter: SortingConstants.releaseDate,
       });
     } else {
-      this.setState({
+      setSectionState({
         sortingParameter: SortingConstants.genre,
       });
     }
   };
 
-  sortMovies = () => {
+  const sortMovies = () => {
     return getMockMovies().sort(
-      this.state.sortingParameter === SortingConstants.releaseDate
+      sectionState.sortingParameter === SortingConstants.releaseDate
         ? movieReleaseDateCompare
         : movieGenreCompare,
     );
   };
 
-  render() {
-    return (
-      <div className="moviesSection">
-        <div className="filterSection">
-          <Filter genres={getMockGenres()} />
-          <Sorting onSortingValueChanged={this.handleSortingValueChanged} />
-        </div>
-        <Divider />
-        <div className="movies">
-          <Result count={getMockCount()} />
-          <MovieList movies={this.sortMovies()} />
-        </div>
+  return (
+    <div className="moviesSection">
+      <div className="filterSection">
+        <Filter genres={getMockGenres()} />
+        <Sorting onSortingValueChanged={handleSortingValueChanged} />
       </div>
-    );
-  }
-}
+      <Divider />
+      <div className="movies">
+        <Result count={getMockCount()} />
+        <MovieList movies={sortMovies()} />
+      </div>
+    </div>
+  );
+};
+
+export default MoviesSection;

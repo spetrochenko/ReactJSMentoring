@@ -1,4 +1,4 @@
-import React, { Component, MouseEvent } from "react";
+import React, { useState, MouseEvent } from "react";
 import Text from "../common/Text";
 import { IMovie } from "../../models/mocks";
 import MovieCard from "./MovieCard";
@@ -10,92 +10,90 @@ export interface MovieListProps {
 }
 
 export interface MovieListState {
-  isEditPopupVisible: boolean;
-  isDeletePopupVisible: boolean;
+  isEditPopupVisible?: boolean;
+  isDeletePopupVisible?: boolean;
   selectedMovie?: IMovie;
 }
 
-export default class MovieList extends Component<
-  MovieListProps,
-  MovieListState
-> {
-  constructor(props: MovieListProps) {
-    super(props);
-    this.state = {
-      isEditPopupVisible: false,
-      isDeletePopupVisible: false,
-      selectedMovie: null,
-    };
-  }
+const MovieList = (props: MovieListProps) => {
+  const [movieListState, setMovieListState] = useState<MovieListState>({
+    isEditPopupVisible: false,
+    isDeletePopupVisible: false,
+    selectedMovie: null,
+  });
 
-  onEditButtonClicked = (event: MouseEvent<Element>, movie: IMovie) => {
-    this.setState({
+  const onEditButtonClicked = (event: MouseEvent<Element>, movie: IMovie) => {
+    setMovieListState({
       isEditPopupVisible: true,
       selectedMovie: movie,
     });
   };
 
-  onDeleteButtonClicked = (event: MouseEvent<Element>, movie: IMovie) => {
-    this.setState({
+  const onDeleteButtonClicked = (event: MouseEvent<Element>, movie: IMovie) => {
+    setMovieListState({
       isDeletePopupVisible: true,
       selectedMovie: movie,
     });
   };
 
-  onCloseEditPopupButtonClick = () => {
-    this.setState({
+  const onCloseEditPopupButtonClick = () => {
+    setMovieListState({
       isEditPopupVisible: false,
     });
   };
 
-  onResetButtonClick = () => {
+  const onResetButtonClick = () => {
     console.log("reset");
   };
 
-  onSubmitEditButtonClick = () => {
-    this.setState({
+  const onSubmitEditButtonClick = () => {
+    setMovieListState({
       isEditPopupVisible: false,
     });
   };
 
-  onCloseDeleteButtonClick = () => {
-    this.setState({ isDeletePopupVisible: false });
+  const onCloseDeleteButtonClick = () => {
+    setMovieListState({
+      isDeletePopupVisible: false,
+    });
   };
 
-  onConfirmButtonClick = (event: MouseEvent<Element>, movie: IMovie) => {
-    console.log(`Delete : ${movie}`);
-    this.setState({ isDeletePopupVisible: false, selectedMovie: movie });
+  const onConfirmButtonClick = (event: MouseEvent<Element>, movie: IMovie) => {
+    setMovieListState({
+      isDeletePopupVisible: false,
+      selectedMovie: movie,
+    });
   };
 
-  renderMovies = () => {
+  const renderMovies = () => {
     return (
       <>
         <div className="movieList">
-          {this.props.movies.map((iMovie) => (
+          {props.movies.map((iMovie) => (
             <MovieCard
               key={iMovie.id}
               movie={iMovie}
-              onEditButtonClick={this.onEditButtonClicked}
-              onDeleteButtonClick={this.onDeleteButtonClicked}
+              onEditButtonClick={onEditButtonClicked}
+              onDeleteButtonClick={onDeleteButtonClicked}
             />
           ))}
         </div>
-        {this.state.isEditPopupVisible ? (
+        {movieListState.isEditPopupVisible ? (
           <AddEditPopup
             isAddPopup={false}
-            onCloseButtonClick={this.onCloseEditPopupButtonClick}
-            onResetButtonClick={this.onResetButtonClick}
-            onSubmitButtonClick={this.onSubmitEditButtonClick}
-            movie={this.state.selectedMovie}
+            onCloseButtonClick={onCloseEditPopupButtonClick}
+            onResetButtonClick={onResetButtonClick}
+            onSubmitButtonClick={onSubmitEditButtonClick}
+            movie={movieListState.selectedMovie}
           />
         ) : (
           <></>
         )}
-        {this.state.isDeletePopupVisible ? (
+        {movieListState.isDeletePopupVisible ? (
           <DeleteMoviePopup
-            movie={this.state.selectedMovie}
-            onCloseButtonClick={this.onCloseDeleteButtonClick}
-            onConfirmClicked={this.onConfirmButtonClick}
+            movie={movieListState.selectedMovie}
+            onCloseButtonClick={onCloseDeleteButtonClick}
+            onConfirmClicked={onConfirmButtonClick}
           />
         ) : (
           <></>
@@ -104,15 +102,15 @@ export default class MovieList extends Component<
     );
   };
 
-  render() {
-    return (
-      <>
-        {this.props.movies.length == 0 ? (
-          <Text text="No Movie Found" className="noMovieFound" />
-        ) : (
-          this.renderMovies()
-        )}
-      </>
-    );
-  }
-}
+  return (
+    <>
+      {props.movies.length == 0 ? (
+        <Text text="No Movie Found" className="noMovieFound" />
+      ) : (
+        renderMovies()
+      )}
+    </>
+  );
+};
+
+export default MovieList;

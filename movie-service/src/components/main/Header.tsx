@@ -1,71 +1,63 @@
-import React, { Component, MouseEvent } from "react";
+import React, { useState, MouseEvent } from "react";
 import Logo from "./Logo";
 import Button from "../common/Button";
 import AddEditPopup from "../movie/AddEditPopup";
-
-export interface HeaderProps {}
 
 export interface HeaderState {
   isPopupVisible: boolean;
 }
 
-class Header extends Component<HeaderProps, HeaderState> {
-  constructor(props: HeaderProps) {
-    super(props);
-    this.state = {
-      isPopupVisible: false,
-    };
-  }
+const Header = () => {
+  const [headerState, setHeaderState] = useState<HeaderState>({
+    isPopupVisible: false,
+  });
 
-  hidePopup = () => {
-    this.setState({
+  const hidePopup = () => {
+    setHeaderState({
       isPopupVisible: false,
     });
   };
 
-  onAddMovieButtonClicked = (event: MouseEvent) => {
-    this.setState({
+  const onAddMovieButtonClicked = (event: MouseEvent) => {
+    setHeaderState({
       isPopupVisible: true,
     });
   };
 
-  onClosePopupButtonClick = (event: MouseEvent) => {
-    this.hidePopup();
+  const onClosePopupButtonClick = (event: MouseEvent) => {
+    hidePopup();
   };
 
-  onResetButtonClick = (event: MouseEvent) => {
+  const onResetButtonClick = (event: MouseEvent) => {
     console.log("reset");
   };
 
-  onSubmitButtonClick = (event: MouseEvent) => {
-    console.log("submit");
-    this.hidePopup();
+  const onSubmitButtonClick = (event: MouseEvent) => {
+    hidePopup();
   };
 
-  render() {
-    return (
-      <>
-        <div className="header">
-          <Logo />
-          <Button
-            className="addMovieButton"
-            text="+ADD MOVIE"
-            onButtonClicked={this.onAddMovieButtonClicked}
-          />
-        </div>
-        {this.state.isPopupVisible ? (
-          <AddEditPopup
-            isAddPopup={true}
-            onCloseButtonClick={this.onClosePopupButtonClick}
-            onResetButtonClick={this.onResetButtonClick}
-            onSubmitButtonClick={this.onSubmitButtonClick}
-          />
-        ) : (
-          <></>
-        )}
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <div className="header">
+        <Logo />
+        <Button
+          className="addMovieButton"
+          text="+ADD MOVIE"
+          onButtonClicked={onAddMovieButtonClicked}
+        />
+      </div>
+      {headerState.isPopupVisible ? (
+        <AddEditPopup
+          isAddPopup={true}
+          onCloseButtonClick={onClosePopupButtonClick}
+          onResetButtonClick={onResetButtonClick}
+          onSubmitButtonClick={onSubmitButtonClick}
+        />
+      ) : (
+        <></>
+      )}
+    </>
+  );
+};
 
 export default Header;

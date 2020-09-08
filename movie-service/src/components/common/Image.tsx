@@ -9,7 +9,11 @@ export interface ImageProps {
 const Image = (props: ImageProps) => {
   const renderDefaultImage = () => {
     return (
-      <div className="defaultImage">
+      <div
+        className={
+          props.className !== undefined ? props.className : "defaultImage"
+        }
+      >
         <Text text="No Image" />
       </div>
     );

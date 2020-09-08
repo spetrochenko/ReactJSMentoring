@@ -7,6 +7,7 @@ import DeleteMoviePopup from "./DeleteMoviePopup";
 
 export interface MovieListProps {
   movies: IMovie[];
+  onMovieCardClick: (event: MouseEvent<Element>, movie: IMovie) => void;
 }
 
 export interface MovieListState {
@@ -75,6 +76,7 @@ const MovieList = (props: MovieListProps) => {
               movie={iMovie}
               onEditButtonClick={onEditButtonClicked}
               onDeleteButtonClick={onDeleteButtonClicked}
+              onMovieCardClick={props.onMovieCardClick}
             />
           ))}
         </div>

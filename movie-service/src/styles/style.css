@@ -174,6 +174,7 @@ body {
 }
 
 .movieCard {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   margin: 1em;
@@ -548,4 +549,82 @@ body {
   background-position-x: 95%;
   background-position-y: 50%;
   background-image: url("../images/down-arrow.svg");
+}
+
+.backButton {
+  border: none;
+  border-radius: 0.2em;
+  outline: none;
+  height: 2em;
+  width: 2em;
+  right: 0;
+  margin-left: auto;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-image: url("../images/search.svg");
+}
+
+.backButton:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.movieDetails {
+  height: auto;
+  margin: 3em 10em;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: #ffffff;
+  display: flex;
+  align-items: baseline;
+}
+
+.movieDetails p {
+  font-weight: lighter;
+}
+
+.movieDetailsImage {
+}
+
+.movieDetailsSection {
+  display: flex;
+  align-items: baseline;
+}
+
+.movieDetailsName {
+  font-size: 4em;
+}
+
+.movieDetailsRating {
+  padding: 0.5em;
+  font-size: 2em;
+  border: 2px solid #6e9f4e;
+  border-radius: 50%;
+  text-align: center;
+  margin-left: 1em;
+  margin-bottom: 2em;
+}
+
+.movieDetailsGenres {
+  font-size: 1.2em;
+  margin-top: -1.2em;
+}
+
+.movieDetailsYear {
+  font-size: 1.5em;
+  color: #f65261;
+}
+
+.movieDetailsDuration {
+  font-size: 1.5em;
+  color: #f65261;
+  margin-left: 2em;
+}
+
+.movieDetailsDescription {
+  text-align: justify;
+  font-size: 1.2em;
+}
+
+.mainSection {
+  margin-left: 2em;
 }

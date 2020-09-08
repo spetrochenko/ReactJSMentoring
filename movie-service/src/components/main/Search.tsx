@@ -2,6 +2,8 @@ import React from "react";
 import EditText from "../common/EditText";
 import Text from "../common/Text";
 import Button from "../common/Button";
+import { IMovie } from "../../models/mocks";
+import MovieDetails from "../movie/MovieDetails";
 
 const Search = () => {
   const onSearchButtonClicked = (event: React.MouseEvent) => {

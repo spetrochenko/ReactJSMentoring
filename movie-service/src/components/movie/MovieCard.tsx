@@ -10,6 +10,7 @@ export interface MovieCardProps {
   movie: IMovie;
   onEditButtonClick: (event: MouseEvent<Element>, movie: IMovie) => void;
   onDeleteButtonClick: (event: MouseEvent<Element>, movie: IMovie) => void;
+  onMovieCardClick: (event: MouseEvent<Element>, movie: IMovie) => void;
 }
 
 export interface MovieCardState {
@@ -48,9 +49,12 @@ const MovieCard = (props: MovieCardProps) => {
   };
 
   return (
-    <div className="movieCard">
+    <div
+      className="movieCard"
+      onClick={(event) => props.onMovieCardClick(event, props.movie)}
+    >
       <div className="imageWrapper">
-        <Image url={props.movie.picture} className="movieCardPicture" />
+        <Image url={props.movie.picture} />
         {cardState.isOptionsVisible ? renderOptions() : renderDots()}
       </div>
       <div className="movieCardNameSection">

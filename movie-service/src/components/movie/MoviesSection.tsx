@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState, useEffect } from "react";
+import React, { MouseEvent, ChangeEvent, useState, useEffect } from "react";
 import Filter from "./Filter";
 import {
   getMockGenres,
@@ -16,12 +16,16 @@ import {
   movieReleaseDateCompare,
 } from "../../infrastracture/Comparison";
 
+export interface MoviesSectionProps {
+  onMovieCardClick: (event: MouseEvent<Element>, movie: IMovie) => void;
+}
+
 export interface MoviesSectionState {
   sortingParameter: string;
   movieList?: IMovie[];
 }
 
-const MoviesSection = () => {
+const MoviesSection = (props: MoviesSectionProps) => {
   const [sectionState, setSectionState] = useState<MoviesSectionState>({
     sortingParameter: SortingConstants.releaseDate,
     movieList: new Array<IMovie>(),
@@ -38,10 +42,12 @@ const MoviesSection = () => {
     if (event.target.value === SortingConstants.releaseDate) {
       setSectionState({
         sortingParameter: SortingConstants.releaseDate,
+        movieList: getMockMovies(),
       });
     } else {
       setSectionState({
         sortingParameter: SortingConstants.genre,
+        movieList: getMockMovies(),
       });
     }
   };
@@ -63,7 +69,10 @@ const MoviesSection = () => {
       <Divider />
       <div className="movies">
         <Result count={getMockCount()} />
-        <MovieList movies={sortMovies()} />
+        <MovieList
+          movies={sortMovies()}
+          onMovieCardClick={props.onMovieCardClick}
+        />
       </div>
     </div>
   );

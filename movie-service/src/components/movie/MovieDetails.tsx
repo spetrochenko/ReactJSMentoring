@@ -17,7 +17,7 @@ const MovieDetails = (props: MovieDetailsProps) => {
           <Text text={props.movie.rating} className="movieDetailsRating" />
         </div>
         <Text
-          text={props.movie.genres.join(" ,")}
+          text={props.movie.genres.join(", ")}
           className="movieDetailsGenres"
         />
         <div className="movieDetailsSection">

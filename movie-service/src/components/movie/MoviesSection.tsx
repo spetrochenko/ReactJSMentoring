@@ -1,4 +1,10 @@
-import React, { MouseEvent, ChangeEvent, useState, useEffect } from "react";
+import React, {
+  MouseEvent,
+  ChangeEvent,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
 import Filter from "./Filter";
 import {
   getMockGenres,
@@ -21,7 +27,7 @@ export interface MoviesSectionProps {
 }
 
 export interface MoviesSectionState {
-  sortingParameter: string;
+  sortingParameter?: string;
   movieList?: IMovie[];
 }
 
@@ -39,26 +45,26 @@ const MoviesSection = (props: MoviesSectionProps) => {
   }, []);
 
   const handleSortingValueChanged = (event: ChangeEvent<HTMLSelectElement>) => {
-    if (event.target.value === SortingConstants.releaseDate) {
-      setSectionState({
-        sortingParameter: SortingConstants.releaseDate,
-        movieList: getMockMovies(),
-      });
-    } else {
-      setSectionState({
-        sortingParameter: SortingConstants.genre,
-        movieList: getMockMovies(),
-      });
-    }
+    sortMoviesMemoizedCallback(event.currentTarget.value);
   };
 
-  const sortMovies = () => {
-    return sectionState.movieList.sort(
-      sectionState.sortingParameter === SortingConstants.releaseDate
-        ? movieReleaseDateCompare
-        : movieGenreCompare,
-    );
+  const sortMovies = (sortingParameter: string) => {
+    setSectionState({
+      sortingParameter: sortingParameter,
+      movieList: getMockMovies().sort(
+        sortingParameter === SortingConstants.releaseDate
+          ? movieReleaseDateCompare
+          : movieGenreCompare,
+      ),
+    });
   };
+
+  const sortMoviesMemoizedCallback = useCallback(
+    (sortingParameter: string) => {
+      sortMovies(sortingParameter);
+    },
+    [setSectionState],
+  );
 
   return (
     <div className="moviesSection">
@@ -70,7 +76,7 @@ const MoviesSection = (props: MoviesSectionProps) => {
       <div className="movies">
         <Result count={getMockCount()} />
         <MovieList
-          movies={sortMovies()}
+          movies={sectionState.movieList}
           onMovieCardClick={props.onMovieCardClick}
         />
       </div>
